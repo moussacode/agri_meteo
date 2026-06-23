@@ -34,10 +34,10 @@ export class RisqueClimatiqueService {
 
   // Score de 0 à 100 basé sur la température
   private calculerScoreTemperature(temp: number): number {
-    if (temp <= 20) return 10;
-    if (temp <= 28) return 25;
-    if (temp <= 33) return 50;
-    if (temp <= 38) return 75;
+    if (temp <= 25) return 10;
+    if (temp <= 35) return 25;
+    if (temp <= 40) return 50;
+    if (temp <= 45) return 75;
     return 100; // > 38°C = danger maximal
   }
 
