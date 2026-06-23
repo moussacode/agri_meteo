@@ -8,6 +8,7 @@ import { PanneauMeteo } from "./composants/panneau-meteo/panneau-meteo";
   imports: [CarteSenegal, PanneauMeteo],
   templateUrl: './app.html',
   styleUrl: './app.css'
+  
 })
 export class App {
   protected readonly title = signal('agri_meteo');
