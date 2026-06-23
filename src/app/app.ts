@@ -1,7 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CarteSenegal } from "./composants/carte-senegal/carte-senegal";
 import { PanneauMeteo } from "./composants/panneau-meteo/panneau-meteo";
+import { MeteoService } from './services/meteo-services';
+import { GeolocalisationService } from './services/geolocalisation-services';
+import { RisqueClimatiqueService } from './services/risqueclimatique-services';
+
 
 @Component({
   selector: 'app-root',
@@ -10,5 +14,22 @@ import { PanneauMeteo } from "./composants/panneau-meteo/panneau-meteo";
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('agri_meteo');
+  constructor(
+  private meteo: MeteoService,
+  private geo: GeolocalisationService,
+  private risque: RisqueClimatiqueService
+) {}
+
+// Exemple d'utilisation :
+async ngOnInit() {
+  const position = await this.geo.obtenirPosition();
+  
+  this.meteo.obtenirMeteo(position.ville).subscribe(donnees => {
+    const indice = this.risque.calculerIndiceRisque(
+      donnees.temperature,
+      donnees.humidite
+    );
+    console.log('Risque:', indice);
+  });
+}
 }
