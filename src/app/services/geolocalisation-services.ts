@@ -24,7 +24,7 @@ export class GeolocalisationService {
     region: 'Dakar'
   };
 
-  constructor(private http: HttpClient) {} // ← on injecte HttpClient
+  constructor(private http: HttpClient) {} // on injecte HttpClient
 
   async obtenirPosition(): Promise<Position> {
     if (!navigator.geolocation) {
