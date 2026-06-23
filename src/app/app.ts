@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { CarteSenegal } from "./composants/carte-senegal/carte-senegal";
+import { PanneauMeteo } from "./composants/panneau-meteo/panneau-meteo";
 import { MeteoService } from './services/meteo-services';
 import { GeolocalisationService } from './services/geolocalisation-services';
 import { RisqueClimatiqueService } from './services/risqueclimatique-services';
@@ -7,7 +9,7 @@ import { RisqueClimatiqueService } from './services/risqueclimatique-services';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [CarteSenegal, PanneauMeteo],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
