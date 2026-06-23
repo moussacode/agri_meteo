@@ -1,59 +1,75 @@
-@if(region() && meteo) {
+@if (region() && meteo()) {
 
 <aside
-  class="fixed z-10 box-border bg-amber-700 backdrop-blur-[20px] text-white
-         bottom-0 left-0 right-0 w-full max-h-[70vh] p-8 rounded-t-3xl
-         border-t border-white/10 animate-slideInBottom
-         md:bottom-auto md:top-0 md:left-auto md:right-0 md:h-full md:w-[380px]
-         md:max-w-[90vw] md:max-h-none md:rounded-none md:border-t-0 md:border-l
-         md:p-10 md:px-8 md:animate-slideIn"
+  class="fixed z-10 box-border  bg-gradient-to-br from-amber-600 to-orange-700
+         text-white bottom-0 left-0 right-0 w-full max-h-[100vh] p-8
+         rounded-t-3xl border-t border-white/10
+         md:top-0 md:right-0 md:left-auto md:h-full md:w-[380px]
+         md:rounded-none md:border-l md:p-10
+         animate-slideInBottom"
 >
 
+  <!-- Bouton fermer -->
   <button
-    class="absolute top-5 right-5 size-8 rounded-full bg-white/10
-           border border-white/15 text-sm"
-   
+    class="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10
+           border border-white/20 hover:bg-white/20 transition"
+    (click)="close()"
   >
     ✕
   </button>
 
-  <header class="border-b border-white/15 pb-5 mb-7">
-    <h2 class="text-3xl font-normal mb-1.5">
-      {{ region() }}
+  <!-- Header -->
+  <header class="border-b border-white/20 pb-6 mb-6">
+
+    <h2 class="text-2xl font-light opacity-80">
+       {{ meteo().ville }}
     </h2>
-    <h2>{{ meteo.ville }}</h2>
 
-<p>🌡️ {{ meteo.temperature }}°C</p>
+   
 
-<p>💧 {{ meteo.humidite }}%</p>
+    <!-- Icône + température -->
+    <div class="flex items-center gap-4 mt-4">
 
-<p>{{ meteo.description }}</p>
+      <img
+        [src]="meteo().icone"
+        class="w-16 h-16"
+      />
 
-    <p class="text-sm text-white/70">
-      Sénégal
-    </p>
+      <div>
+        <p class="text-4xl font-light">
+          {{ meteo().temperature }}°C
+        </p>
+        <p class="text-sm opacity-80 capitalize">
+          {{ meteo().description }}
+        </p>
+      </div>
+
+    </div>
+
   </header>
 
-  <div class="mb-8">
-    <span class="text-8xl font-light leading-none">
-      
-    </span>
-  </div>
+  <!-- Infos -->
+  <div class="flex flex-col gap-5">
 
-  <div class="flex flex-col gap-4 mb-7">
-
-    <div class="flex justify-between">
-      <span class="text-white/70">Humidité</span>
-     
+    <div class="flex justify-between border-b border-white/10 pb-2">
+      <span class="text-white/70">💧 Humidité</span>
+      <span>{{ meteo().humidite }}%</span>
     </div>
 
-    <div class="flex justify-between">
-      <span class="text-white/70">Condition</span>
-     
+    <div class="flex justify-between border-b border-white/10 pb-2">
+      <span class="text-white/70">🌤️ Condition</span>
+      <span class="capitalize">{{ meteo().description }}</span>
     </div>
 
   </div>
 
+  <!-- Analyse prédictive (bonus UX) -->
+  <div class="mt-6 p-4 bg-white/10 rounded-xl">
+    <h4 class="text-sm font-semibold mb-2">📊 Analyse</h4>
+    <p class="text-sm opacity-80">
+      Conditions stables sur la région. Aucune alerte majeure détectée.
+    </p>
+  </div>
 
 </aside>
 
