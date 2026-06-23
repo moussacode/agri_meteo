@@ -1,4 +1,4 @@
-@if(region() && meteo()) {
+@if(region() && meteo) {
 
 <aside
   class="fixed z-10 box-border bg-amber-700 backdrop-blur-[20px] text-white
@@ -21,6 +21,13 @@
     <h2 class="text-3xl font-normal mb-1.5">
       {{ region() }}
     </h2>
+    <h2>{{ meteo.ville }}</h2>
+
+<p>🌡️ {{ meteo.temperature }}°C</p>
+
+<p>💧 {{ meteo.humidite }}%</p>
+
+<p>{{ meteo.description }}</p>
 
     <p class="text-sm text-white/70">
       Sénégal

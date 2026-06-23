@@ -1,5 +1,8 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { MeteoStateService } from '../../services/service-meteo';
+import { MeteoService } from '../../services/meteo-services';
+import { switchMap } from 'rxjs';
+
 
 @Component({
   selector: 'app-panneau-meteo',
@@ -8,18 +11,45 @@ import { MeteoStateService } from '../../services/service-meteo';
 })
 export class PanneauMeteo {
 
-  meteoState = inject(MeteoStateService);
+  private meteoState = inject(MeteoStateService);
 
   region = this.meteoState.selectedRegion;
 
-  meteo = computed(() => {
+  meteo: any = null;
+  loading = false;
+  erreur = '';
 
-    const region = this.region();
+  constructor(
+    private meteoService: MeteoService
+  ) {
 
-    if (!region) return null;
+    effect(() => {
+      const region = this.region();
 
-    
-    console.log(region)
-    return region;
-  });
+      if (region) {
+        this.chargerMeteo(region);
+      }
+    });
+
+  }
+
+  chargerMeteo(region: string) {
+
+    this.loading = true;
+    this.erreur = '';
+
+    this.meteoService.obtenirMeteo(region).subscribe({
+
+      next: (data) => {
+        this.meteo = data;
+        this.loading = false;
+      },
+
+      error: (err) => {
+        this.erreur = err.message;
+        this.loading = false;
+      }
+
+    });
+  }
 }
