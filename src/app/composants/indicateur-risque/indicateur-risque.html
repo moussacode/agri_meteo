@@ -1,0 +1,30 @@
+<div class="indicateur" *ngIf="indice">
+
+  <!-- Titre + score -->
+  <h3>🌡️ Indice de risque climatique</h3>
+  <p class="score">Score : <strong>{{ indice.score }}/100</strong></p>
+
+  <!-- Jauge de progression -->
+  <div class="jauge-fond">
+    <div class="jauge-barre"
+         [style.width]="largeurJauge"
+         [style.background]="indice.couleur">
+    </div>
+  </div>
+
+  <!-- Les 4 niveaux -->
+  <div class="niveaux">
+    <div *ngFor="let n of niveaux"
+         class="niveau-item"
+         [class.actif]="estActif(n.niveau)">
+      <span class="emoji">{{ n.emoji }}</span>
+      <span class="label">{{ n.label }}</span>
+    </div>
+  </div>
+
+  <!-- Message contextuel -->
+  <p class="message" [style.color]="indice.couleur">
+    {{ indice.message }}
+  </p>
+
+</div>

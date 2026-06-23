@@ -1,0 +1,55 @@
+.indicateur {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+h3 { margin: 0 0 0.5rem 0; color: #374151; }
+
+.score { color: #6b7280; margin-bottom: 1rem; }
+
+/* Jauge */
+.jauge-fond {
+  background: #e5e7eb;
+  border-radius: 999px;
+  height: 12px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.jauge-barre {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.6s ease; /* animation fluide */
+}
+
+/* Les 4 niveaux en ligne */
+.niveaux {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.niveau-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.3;         /* grisé par défaut */
+  transition: opacity 0.3s;
+}
+
+.niveau-item.actif {
+  opacity: 1;           /* mis en valeur si actif */
+  font-weight: bold;
+}
+
+.emoji { font-size: 1.5rem; }
+.label { font-size: 0.75rem; color: #374151; }
+
+.message {
+  text-align: center;
+  font-weight: 500;
+  margin: 0;
+}
