@@ -1,0 +1,53 @@
+@if(region() && meteo()) {
+
+<aside
+  class="fixed z-10 box-border bg-amber-700 backdrop-blur-[20px] text-white
+         bottom-0 left-0 right-0 w-full max-h-[70vh] p-8 rounded-t-3xl
+         border-t border-white/10 animate-slideInBottom
+         md:bottom-auto md:top-0 md:left-auto md:right-0 md:h-full md:w-[380px]
+         md:max-w-[90vw] md:max-h-none md:rounded-none md:border-t-0 md:border-l
+         md:p-10 md:px-8 md:animate-slideIn"
+>
+
+  <button
+    class="absolute top-5 right-5 size-8 rounded-full bg-white/10
+           border border-white/15 text-sm"
+   
+  >
+    ✕
+  </button>
+
+  <header class="border-b border-white/15 pb-5 mb-7">
+    <h2 class="text-3xl font-normal mb-1.5">
+      {{ region() }}
+    </h2>
+
+    <p class="text-sm text-white/70">
+      Sénégal
+    </p>
+  </header>
+
+  <div class="mb-8">
+    <span class="text-8xl font-light leading-none">
+      
+    </span>
+  </div>
+
+  <div class="flex flex-col gap-4 mb-7">
+
+    <div class="flex justify-between">
+      <span class="text-white/70">Humidité</span>
+     
+    </div>
+
+    <div class="flex justify-between">
+      <span class="text-white/70">Condition</span>
+     
+    </div>
+
+  </div>
+
+
+</aside>
+
+}
