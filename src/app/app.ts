@@ -17,8 +17,6 @@ import { HistoriqueMeteoService, JourMeteo } from './services/historiquemeteo-se
   imports: [
     CarteSenegal,
     PanneauMeteo,
-    GraphiqueClimatiqueComponent,   // ← ajouté
-    IndicateurRisqueComponent       // ← ajouté
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'
