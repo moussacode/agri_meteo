@@ -1,0 +1,74 @@
+@if (region() && meteo()) {
+
+<aside
+  class="fixed z-10 box-border  bg-gradient-to-br from-amber-900 to-orange-700
+         text-white bottom-0 left-0 right-0 w-full max-h-[100vh] p-8
+         rounded-t-3xl border-t border-white/10
+         md:top-0 md:right-0 md:left-auto md:h-full md:w-[380px]
+         md:rounded-none md:border-l md:p-10
+         animate-slideInBottom overflow-auto"
+>
+
+  <!-- Bouton fermer -->
+  <button
+    class="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10
+           border border-white/20 hover:bg-white/20 transition"
+    (click)="close()"
+  >
+    ✕
+  </button>
+
+  <!-- Header -->
+  <header class="border-b border-white/20 pb-6 mb-6">
+
+    <h2 class="text-2xl font-light opacity-80">
+       {{ meteo().ville }}
+    </h2>
+
+   
+
+    <!-- Icône + température -->
+    <div class="flex items-center gap-4 mt-4">
+
+      <img
+        [src]="meteo().icone"
+        class="w-16 h-16"
+      />
+
+      <div>
+        <p class="text-4xl font-light">
+          {{ meteo().temperature }}°C
+        </p>
+        <p class="text-sm opacity-80 capitalize">
+          {{ meteo().description }}
+        </p>
+      </div>
+
+    </div>
+
+  </header>
+
+  <!-- Infos -->
+  <div class="flex flex-col gap-5">
+
+    <div class="flex justify-between border-b border-white/10 pb-2">
+      <span class="text-white/70">💧 Humidité</span>
+      <span>{{ meteo().humidite }}%</span>
+    </div>
+
+    <div class="flex justify-between border-b border-white/10 pb-2">
+      <span class="text-white/70">🌤️ Condition</span>
+      <span class="capitalize">{{ meteo().description }}</span>
+    </div>
+
+  </div>
+<div class="flex flex-col gap-4">
+   <app-graphique-climatique [historique]="historique" />
+      <app-indicateur-risque [indice]="indice" />
+
+
+</div>
+
+</aside>
+
+}

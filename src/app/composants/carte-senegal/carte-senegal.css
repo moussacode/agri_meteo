@@ -1,0 +1,11 @@
+.map-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.senegal-map {
+  width: 100%;
+  height: auto;
+  display: block;
+}
