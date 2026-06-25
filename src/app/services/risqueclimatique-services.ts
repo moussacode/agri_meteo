@@ -11,7 +11,7 @@ export interface IndiceRisque {
 @Injectable({
   providedIn: 'root'
 })
-export class RisqueClimatiqueService {
+ export class RisqueClimatiqueService {
 
   // Méthode principale demandée dans les specs
   calculerIndiceRisque(temperature: number, humidite: number): IndiceRisque {
