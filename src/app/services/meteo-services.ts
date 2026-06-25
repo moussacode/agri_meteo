@@ -17,7 +17,7 @@ export interface DonneesMeteo {
 })
 
 export class MeteoService{
-    private readonly Cle_Api = "42982dedae6db57558285b836484c430";
+    private readonly Cle_Api = "04972dffeae8a8a4ab46f667f4b29c33";
     private readonly Url_Base ="https://api.openweathermap.org/data/2.5/weather";
     
     constructor(private http: HttpClient){}

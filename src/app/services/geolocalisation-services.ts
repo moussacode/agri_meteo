@@ -14,11 +14,11 @@ export interface Position {
 })
 export class GeolocalisationService {
 
-  private readonly CLE_API = "42982dedae6db57558285b836484c430"; // même clé que MeteoService
+  private readonly CLE_API = "04972dffeae8a8a4ab46f667f4b29c33"; // même clé que MeteoService
   private readonly URL_GEO = 'https://api.openweathermap.org/geo/1.0/reverse';
 
   private readonly FALLBACK: Position = {
-    ville: 'Paris',
+    ville: 'Dakar',
     latitude: 14.6928,
     longitude: -17.4467,
     region: 'Dakar'
