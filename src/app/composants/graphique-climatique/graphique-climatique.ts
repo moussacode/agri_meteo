@@ -44,7 +44,7 @@ export class GraphiqueClimatiqueComponent implements AfterViewInit, OnChanges {
           {
             label: 'Température (°C)',
             data: this.historique.map(j => j.temperature),
-            borderColor: '#ef4444',
+            borderColor: '#3d7a4a',
             backgroundColor: 'rgba(239,68,68,0.1)',
             tension: 0.4,   // courbe lisse
             fill: true,
