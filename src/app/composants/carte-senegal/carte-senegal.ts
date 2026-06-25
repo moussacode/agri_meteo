@@ -34,7 +34,7 @@ export class CarteSenegal {
   getRegionClass(region: string): string {
 
     if (this.selectedRegion === region) {
-      return 'fill-red-500';
+      return 'fill-[#3d7a4a]';
     }
 
     if (this.hovered === region) {
