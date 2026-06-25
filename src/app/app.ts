@@ -10,6 +10,7 @@ import { MeteoService } from './services/meteo-services';
 import { GeolocalisationService } from './services/geolocalisation-services';
 import { RisqueClimatiqueService, IndiceRisque } from './services/risqueclimatique-services';
 import { HistoriqueMeteoService, JourMeteo } from './services/historiquemeteo-services';
+import { NavBar } from "./composants/nav-bar/nav-bar";
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,8 @@ import { HistoriqueMeteoService, JourMeteo } from './services/historiquemeteo-se
   imports: [
     CarteSenegal,
     PanneauMeteo,
-  ],
+    NavBar
+],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
