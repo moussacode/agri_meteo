@@ -1,9 +1,11 @@
-.carte-container {
+.map-container {
   width: 100%;
- 
+  max-width: 1200px;
+  margin: auto;
 }
 
-svg {
+.senegal-map {
   width: 100%;
   height: auto;
+  display: block;
 }
