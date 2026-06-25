@@ -18,7 +18,7 @@ export class GeolocalisationService {
   private readonly URL_GEO = 'https://api.openweathermap.org/geo/1.0/reverse';
 
   private readonly FALLBACK: Position = {
-    ville: 'Dakar',
+    ville: 'Paris',
     latitude: 14.6928,
     longitude: -17.4467,
     region: 'Dakar'
@@ -28,19 +28,27 @@ export class GeolocalisationService {
 
   async obtenirPosition(): Promise<Position> {
     if (!navigator.geolocation) {
+      
       return this.FALLBACK;
     }
-
-    return new Promise((resolve) => {
+    
+   return new Promise((resolve) => {
       navigator.geolocation.getCurrentPosition(
         // Succès GPS → on appelle l'API OpenWeatherMap pour avoir le nom
         async (position) => {
+          
           const lat = position.coords.latitude;
           const lon = position.coords.longitude;
 
           try {
             const ville = await this.coordonneesVersVille(lat, lon);
             resolve({ ville, latitude: lat, longitude: lon, region: ville });
+
+            console.log(ville)
+            console.log(lat)
+            console.log(lon)
+
+            
           } catch {
             // Si l'API échoue, fallback Dakar
             resolve(this.FALLBACK);

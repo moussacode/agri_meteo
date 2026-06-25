@@ -23,54 +23,7 @@ import { HistoriqueMeteoService, JourMeteo } from './services/historiquemeteo-se
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App implements OnInit {
+export class App {
 
-  historique: JourMeteo[] = [];
-  indice!: IndiceRisque;
-  private meteoState = inject(MeteoStateService);
-  constructor(
-  private meteo: MeteoService,
-  private geo: GeolocalisationService,
-  private risque: RisqueClimatiqueService,
-  private historiqueService: HistoriqueMeteoService
-) {
-
-  effect(() => {
-
-    const region = this.meteoState.selectedRegion();
-
-    if (!region) return;
-
-    this.chargerDonnees(region);
-
-  });
-
-}
-chargerDonnees(ville: string) {
-
-  this.meteo.obtenirMeteo(ville).subscribe(donnees => {
-
-    this.historique = this.historiqueService.genererHistorique(
-      donnees.temperature,
-      donnees.humidite
-    );
-
-    this.indice = this.risque.calculerIndiceRisque(
-      donnees.temperature,
-      donnees.humidite
-    );
-
-  });
-
-}
-
-  // Un seul ngOnInit, un seul appel API
-  async ngOnInit() {
-  try {
-    const position = await this.geo.obtenirPosition();
-    this.chargerDonnees(position.ville);
-  } catch (error) {
-    console.error('Erreur de géolocalisation', error);
-  }
-}
+  
 }

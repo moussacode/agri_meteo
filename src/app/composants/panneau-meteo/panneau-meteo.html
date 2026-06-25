@@ -1,12 +1,12 @@
 @if (region() && meteo()) {
 
 <aside
-  class="fixed z-10 box-border  bg-gradient-to-br from-amber-600 to-orange-700
+  class="fixed z-10 box-border  bg-gradient-to-br from-amber-900 to-orange-700
          text-white bottom-0 left-0 right-0 w-full max-h-[100vh] p-8
          rounded-t-3xl border-t border-white/10
          md:top-0 md:right-0 md:left-auto md:h-full md:w-[380px]
          md:rounded-none md:border-l md:p-10
-         animate-slideInBottom"
+         animate-slideInBottom overflow-auto"
 >
 
   <!-- Bouton fermer -->
@@ -62,14 +62,12 @@
     </div>
 
   </div>
+<div class="flex flex-col gap-4">
+   <app-graphique-climatique [historique]="historique" />
+      <app-indicateur-risque [indice]="indice" />
 
-  <!-- Analyse prédictive (bonus UX) -->
-  <div class="mt-6 p-4 bg-white/10 rounded-xl">
-    <h4 class="text-sm font-semibold mb-2">📊 Analyse</h4>
-    <p class="text-sm opacity-80">
-      Conditions stables sur la région. Aucune alerte majeure détectée.
-    </p>
-  </div>
+
+</div>
 
 </aside>
 
