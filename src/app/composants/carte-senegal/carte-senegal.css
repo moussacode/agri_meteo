@@ -1,11 +1,35 @@
 .map-container {
   width: 100%;
-  max-width: 1200px;
+  margin: auto;
+  overflow: visible;
+}
+
+svg {
+  width: 1300px;
+  height: auto;
+  display: block;
   margin: auto;
 }
 
-.senegal-map {
-  width: 100%;
-  height: auto;
-  display: block;
+/* 📱 Tablette */
+@media (max-width: 1024px) {
+  svg {
+    width: 700px;
+  }
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+  svg {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+/* 📱 Petit mobile */
+@media (max-width: 480px) {
+  svg {
+    width: 100%;
+    max-width: 350px;
+  }
 }
